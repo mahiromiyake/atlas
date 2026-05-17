@@ -1,4 +1,4 @@
-# A.T.L.A.S. セットアップガイド
+# ATLAS セットアップガイド
 
 **Authenticated Tunnel for Live Astrophotography Streaming**
 
@@ -25,7 +25,7 @@ VPS (Oracle Cloud) ← OpenVPN Server
   Webサーバー (HTTPS)
   → /login          コンソールログイン (https://atlas.skycluster.jp/login)
   → /console        公開管理
-  → /               公開ページ (全世界閲覧, 30秒自動更新)
+  → /               公開ページ (全世界閲覧, 5秒自動更新)
 ```
 
 ---
@@ -402,7 +402,7 @@ sudo /etc/stellarmate/atomic-updates.sh --disable
 sudo pacman -S python-astropy python-pillow --noconfirm
 sudo /etc/stellarmate/atomic-updates.sh --enable
 
-pip3 install astroalign ccdproc --break-system-packages
+pip3 install astroalign scikit-image opencv-python-headless --break-system-packages
 ```
 
 ### 3-3. スタック＆転送スクリプト配置
@@ -523,7 +523,8 @@ tail -f ~/healthcheck.log
 | 機能 | 説明 |
 |---|---|
 | 公開/非公開 | セッション（天体）ごとに個別に切り替えられます。状態は再起動後も維持されます。 |
-| 直近フレームを除外 | 最新フレームから順に除外できます。最低1フレームは維持されます。スタック処理中はボタンが無効化されます。 |
+| EXCLUDE_FRAME | フレーム番号を指定して除外できます。最低1フレームは維持されます。スタック処理中はボタンが無効化されます。 |
+| CLEAR_EXCLUDED & RESTACK | 除外リストをクリアして全フレームで再スタックします。処理中はロックされます。 |
 | DELETE_THIS_PHOTOGRAPHY | そのセッションの画像とフォルダをVPSから完全に削除します。 |
 
 ---
