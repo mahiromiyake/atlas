@@ -56,7 +56,8 @@ StellarMate ← indiserver (望遠鏡・カメラ制御)
 ```
 src/
 ├── VPS/
-│   └── server.js              # Webサーバー
+│   ├── server.js              # Webサーバー
+│   └── favicon.webp           # ファビコン・iOSアイコン
 └── StellarMate/
     ├── stack_and_transfer.py  # スタック＆転送スクリプト
     ├── watch_and_stack.sh     # ファイル監視スクリプト
@@ -280,6 +281,7 @@ npm install express express-session bcryptjs
 ```
 
 `src/VPS/server.js` を `~/astro/server.js` にコピーしてください。
+`src/VPS/favicon.webp` を `~/astro/favicon.webp` にコピーしてください。
 
 > **⚠️ 重要**: `server.js` の **9行目** にある `'change me!!'` を任意のパスワードに変更してください。
 
